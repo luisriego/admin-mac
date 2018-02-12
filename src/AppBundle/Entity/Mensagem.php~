@@ -1,0 +1,72 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Mensagem
+ *
+ * @ORM\Table(name="mensagem")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\MensagemRepository")
+ */
+class Mensagem
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+//    /**
+//     * @var int
+//     *
+//     * @ORM\Column(name="remetente", type="integer", nullable=true)
+//     */
+//    private $remetente;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="remetente_id", referencedColumnName="id")
+     */
+    protected $remetente;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="destinatario_id", referencedColumnName="id")
+     */
+    protected $destinatario;
+
+//    /**
+//     * @var int
+//     *
+//     * @ORM\Column(name="destinatario", type="integer", nullable=true)
+//     */
+//    private $destinatario;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createdAt", type="datetime", nullable=true)
+     */
+    private $createdAt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="titulo", type="string", length=255, nullable=true)
+     */
+    private $titulo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="texto", type="text", nullable=true)
+     */
+    private $texto;
+
+
+}

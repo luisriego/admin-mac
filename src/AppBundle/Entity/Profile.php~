@@ -1,0 +1,73 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Profile
+ *
+ * @ORM\Table(name="profile")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ProfileRepository")
+ */
+class Profile
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="nome", type="string", length=100, nullable=true)
+     */
+    private $nome;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="sobrenome", type="string", length=100, nullable=true)
+     */
+    private $sobrenome;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="telefone", type="string", length=25, nullable=true)
+     */
+    private $telefone;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="celular", type="string", length=25, nullable=true)
+     */
+    private $celular;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="menssagem", type="text", nullable=true)
+     */
+    private $menssagem;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="titulo", type="string", length=255, nullable=true)
+     */
+    private $titulo;
+
+    /**
+     * Cada perfil tiene un usuario.
+     * @ORM\OneToOne(targetEntity="User", inversedBy="profile")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
+
+}

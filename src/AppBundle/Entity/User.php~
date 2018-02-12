@@ -1,0 +1,78 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use FOS\UserBundle\Model\User as BaseUser;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Table(name="fos_user")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
+ */
+class User extends BaseUser
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nome", type="string", length=55, unique=true, nullable=true)
+     */
+    private $nome;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sobrenome", type="string", length=255, unique=true, nullable=true)
+     */
+    private $sobrenome;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="avatar", type="string", length=100, nullable=true)
+     */
+    private $avatar;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Cliente", inversedBy="usuarios")
+     * @ORM\JoinColumn(name="empresa", referencedColumnName="id")
+     */
+    protected $empresa;
+
+    /**
+     * cada Usuario tem um perfil.
+     * @ORM\OneToOne(targetEntity="Profile", mappedBy="user")
+     */
+    private $perfil;
+
+    /**
+     * cada Endereco tem um perfil.
+     * @ORM\OneToOne(targetEntity="Endereco", mappedBy="user")
+     */
+    private $endereco;
+
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    private function nomeCompleto()
+    {
+        $nomeCompleto = $this->nome.' '.$this->sobrenome;
+
+        return $nomeCompleto;
+    }
+
+    public function getNomeCompleto()
+    {
+        return $this->nomeCompleto();
+    }
+
+
+}

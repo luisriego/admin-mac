@@ -1,0 +1,70 @@
+auth:
+    login:
+        action: login
+        username: usuário
+        password: password
+        remember-me: 'lembrar de mim'
+        forgotPwd: 'esqueceu a senha?'
+        haveAnAccount: 'Você ainda não tem conta?'
+        signUp: 'registrar-se'
+        facebook: 'logar-se com Facebook'
+        google: 'logar-se com Google'
+    recovery:
+        recover: 'recuperar senha'
+        instructions: 'introduza seu e-mail e lhe enviaremos instruções!'
+        email: 'e-mail'
+        reset: 'recuperar'
+    register:
+        title: 'registre-se agora!'
+        subtitle: 'Crie sua conta para acessar o sistema'
+        name: nome
+        email: e-mail
+        password: password
+        confirm: confirmar password
+        terms: térmos
+        conditions: condições
+        aceito: aceito todos os
+        action: registrar-se
+        haveAnAccount: 'Você já tem uma conta?'
+        signIn: entrar
+
+header:
+    viewProfile: ver perfil de usuário
+    profile: meu perfil
+    role: meu role
+    account: minha conta
+    custom: customizar a minha conta
+
+left:
+    account:
+        profile: meu perfil
+        balance: financeiro
+        setting: personalizar conta
+        logout: logout
+        nouser: nenhum usuário logado
+    home: painel principal
+    call:
+        title: chamados técnicos
+        open: chamados abertos
+        close: chamados finalizados
+    person:
+        title: pessoas
+        users: usuários
+        clients: clientes
+        thecnics: técnicos
+        employees: empleados
+    data:
+        title: dados utilizados
+        statuses: status
+        servers: servidores
+        vServers: servidores virtuais
+        net: tipos de internet
+        systems: sistemas
+        printers: impressoras
+        workstations: estações de trabalho
+        routers: tipos de roteador
+        bugs: tipos de defeito
+    graph:
+        title: gráficos
+        graphics: gráficos
+        reports: relatório

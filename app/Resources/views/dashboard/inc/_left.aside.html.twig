@@ -1,0 +1,92 @@
+<!-- Sidebar scroll-->
+<div class="scroll-sidebar">
+    <!-- Sidebar navigation-->
+    <nav class="sidebar-nav">
+        <ul id="sidebarnav">
+            <li class="user-profile">
+                {% if app.user %}
+                    {% if app.user.nome is not null or app.user.sobrenome is not null  %}
+                        {% set nome = app.user.nomeCompleto %}
+                    {% else %}
+                        {% set nome = app.user.username %}
+                    {% endif %}
+                    {% if app.user.avatar %}
+                        {% set imagem = app.user.avatar %}
+                    {% else %}
+                        {% set imagem = 'default.jpg' %}
+                    {% endif %}
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                        <img src="{{ asset('assets/images/users/'~imagem) }}" alt="user" />
+                        <span class="hide-menu">{{ nome }} </span>
+                    </a>
+                {% endif %}
+
+                <ul aria-expanded="false" class="collapse">
+                    <li><a href="{{ path('perfil') }}">{{ 'left.account.profile'|trans|title }} </a></li>
+                    <li><a href="javascript:void()">{{ 'left.account.balance'|trans|title }}</a></li>
+                    <li><a href="javascript:void()">{{ 'left.account.setting'|trans|title }}</a></li>
+                    {% if app.user %}
+                        <li>
+                            <a href="{{ path('fos_user_security_logout') }}">
+                                {{ 'left.account.logout'|trans|title }}
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </li>
+            <li class="nav-devider"></li>
+            {#<li class="nav-small-cap">{{ 'left.home'|trans|capitalize}}</li>#}
+            <li>
+                <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                    <i class="mdi mdi-bullhorn"></i>
+                    <span class="hide-menu">{{ 'left.call.title'|trans|capitalize}}</span>
+                </a>
+                <ul aria-expanded="false" class="collapse">
+                    <li><a href="{{ path('chamados-abertos') }}">{{ 'left.call.open'|trans|capitalize }} </a></li>
+                    <li><a href="{{ path('chamados-finalizados') }}">{{ 'left.call.close'|trans|capitalize }}</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                    <i class="mdi mdi-human-greeting"></i>
+                    <span class="hide-menu">{{ 'left.person.title'|trans|capitalize }}</span>
+                </a>
+                <ul aria-expanded="false" class="collapse">
+                    <li><a href="{{ path('admin_user_index') }}">{{ 'left.person.users'|trans|capitalize }}</a></li>
+                    <li><a href="{{ path('admin_cliente_index') }}">{{ 'left.person.clients'|trans|capitalize }}</a></li>
+                    <li><a href="{{ path('admin_empleado_index') }}">{{ 'left.person.employees'|trans|capitalize }}</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                    <i class="mdi mdi-chart-bubble"></i>
+                    <span class="hide-menu">{{ 'left.data.title'|trans|capitalize }}</span>
+                </a>
+                <ul aria-expanded="false" class="collapse">
+                    <li><a href="{{ path('admin_status_index') }}">{{ 'left.data.statuses'|trans|capitalize }}</a></li>
+                    {#<li><a href="{{ path('admin_tecnico_index') }}">{{ 'left.person.thecnics'|trans|capitalize }}</a></li>#}
+                    <li><a href="{{ path('admin_servidor_index') }}">{{ 'left.data.servers'|trans|capitalize }}</a></li>
+                    <li><a href="{{ path('admin_vserve_index') }}">{{ 'left.data.vServers'|trans|capitalize }}</a></li>
+                    <li><a href="{{ path('admin_internet_index') }}">{{ 'left.data.net'|trans|capitalize }}</a></li>
+                    <li><a href="{{ path('admin_sistema_index') }}">{{ 'left.data.systems'|trans|capitalize }}</a></li>
+                    <li><a href="{{ path('admin_impressora_index') }}">{{ 'left.data.printers'|trans|capitalize }}</a></li>
+                    <li><a href="{{ path('admin_estacao_index') }}">{{ 'left.data.workstations'|trans|capitalize }}</a></li>
+                    <li><a href="{{ path('admin_roteador_index') }}">{{ 'left.data.routers'|trans|capitalize }}</a></li>
+                    <li><a href="{{ path('admin_defeito_index') }}">{{ 'left.data.bugs'|trans|capitalize }}</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                    <i class="mdi mdi-trending-up"></i>
+                    <span class="hide-menu">{{ 'left.graph.title'|trans|capitalize }}</span>
+                </a>
+                <ul aria-expanded="false" class="collapse">
+                    <li><a href="app-email.html">{{ 'left.graph.graphics'|trans|capitalize }}</a></li>
+                    <li><a href="app-email-detail.html">{{ 'left.graph.reports'|trans|capitalize }}</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <!-- End Sidebar navigation -->
+</div>
+<!-- End Sidebar scroll-->

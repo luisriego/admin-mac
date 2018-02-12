@@ -1,0 +1,26 @@
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        {#{% for breadcrumb in breadcrumbs if breadcrumb.is_root %}#}
+            {##}
+        {#{% else %}#}
+
+        {#{% endfor %}#}
+        <a href="{{ path('homepage') }}"><h3 class="text-themecolor">Painel Principal</h3></a>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            {% for breadcrumb in breadcrumbs %}
+                {% if breadcrumb.is_root %}
+                    <li class="breadcrumb-item">{{ breadcrumb.name }}</li>
+                {% else %}
+                    <li class="breadcrumb-item"><a href="{{ path(breadcrumb.url) }}">{{ breadcrumb.name }}</a></li>
+                {% endif %}
+            {% endfor %}
+
+            {#<li class="breadcrumb-item active">Painel principal</li>#}
+        </ol>
+    </div>
+    <div class="">
+        <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+    </div>
+</div>
