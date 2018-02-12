@@ -55,13 +55,7 @@ class Endereco
      * @ORM\Column(name="cidade", type="string", length=100, nullable=true)
      */
     private $cidade;
-
-    /**
-     * Cada perfil tiene un usuario.
-     * @ORM\OneToOne(targetEntity="User", inversedBy="endereco")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     */
-    private $user;
+    
 
 
     private function enderecoCompleto()

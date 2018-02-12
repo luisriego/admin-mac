@@ -7,26 +7,20 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-class DefaultController extends Controller
+/**
+ * Class DefaultController
+ * @package AppBundle\Controller
+ * @Route("/admin")
+ */
+class BackendController extends Controller
 {
     /**
-     * @Route("/", name="public")
+     * @Route("/dashboard", name="dashboard")
      */
-    public function publicAction(Request $request)
+    public function backendAction(Request $request, Utiles $utiles)
     {
-
-        // replace this example code with whatever you need
-        return $this->render('public/index.html.twig', []);
-    }
-
-    /**
-     * @Route("/admin", name="homepage")
-     */
-    public function indexAction(Request $request, Utiles $utiles)
-    {
-        $usuario = $this->getUser();
         $em = $this->getDoctrine()->getManager();
-
+        
         // Primero guradamos en data los valores obtenidos de la api weather con el servicio Utiles
         $weather = $utiles->weather();
         
@@ -35,9 +29,7 @@ class DefaultController extends Controller
         $todosUsuarios = $em->getRepository('AppBundle:User')->findBy(array(), array('lastLogin' => 'DESC'));
         $todosClientes = $em->getRepository('AppBundle:Cliente')->findAll();
         $chamadosFinalizados = $em->getRepository('AppBundle:Chamado')->chamadosFinalAdmin();
-        $abertos = $em->getRepository('AppBundle:Chamado')->chamadosAbertos();
-
-
+        $chamadosAbertos = $em->getRepository('AppBundle:Chamado')->chamadosAbertos();
         // dados del breadcrumb
         $breadcrumbs = [
             'home' => [
@@ -48,47 +40,16 @@ class DefaultController extends Controller
         ];
 
         // replace this example code with whatever you need
-        return $this->render('dashboard/index.html.twig', [
-            'usuario' => $usuario,
-            'weather' => $weather,
-            'breadcrumbs' => $breadcrumbs,
+        return $this->render('backend/dashboard/index.html.twig', [
+            'titulo'                => 'Dashboard',
+            'breadcrumbs'           => $breadcrumbs,
             'todosChamados'         => $todosChamados,
             'todosTecnicos'         => $todosTecnicos,
             'todosUsuarios'         => $todosUsuarios,
             'todosClientes'         => $todosClientes,
             'chamadosFinalizados'   => $chamadosFinalizados,
-            'chamados'       => $abertos,
+            'chamadosAbertos'       => $chamadosAbertos,
+            'weather'               => $weather,
         ]);
-    }
-
-
-
-//    /**
-//     * @Route("/login", name="login")
-//     */
-//    public function loginAction(Request $request)
-//    {
-//        // replace this example code with whatever you need
-//        return $this->render('@FOSUser/layout.html.twig', []);
-//    }
-
-    /**
-     * @Route("/register", name="register")
-     */
-    public function registerAction(Request $request)
-    {
-
-        // replace this example code with whatever you need
-        return $this->render('auth/register.html.twig', []);
-    }
-
-    /**
-     * @Route("/termos-e-condicoes", name="terms")
-     */
-    public function termsAction(Request $request)
-    {
-
-        // replace this example code with whatever you need
-        return $this->render('auth/terms.html.twig', []);
     }
 }

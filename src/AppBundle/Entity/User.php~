@@ -46,14 +46,14 @@ class User extends BaseUser
     protected $empresa;
 
     /**
-     * cada Usuario tem um perfil.
-     * @ORM\OneToOne(targetEntity="Profile", mappedBy="user")
+     * @ORM\OneToOne(targetEntity="Profile")
+     * @ORM\JoinColumn(name="profile_id", referencedColumnName="id")
      */
-    private $perfil;
-
+    private $profile;
+    
     /**
-     * cada Endereco tem um perfil.
-     * @ORM\OneToOne(targetEntity="Endereco", mappedBy="user")
+     * @ORM\OneToOne(targetEntity="Endereco")
+     * @ORM\JoinColumn(name="endereco_id", referencedColumnName="id")
      */
     private $endereco;
 
@@ -66,6 +66,9 @@ class User extends BaseUser
     {
         $nomeCompleto = $this->nome.' '.$this->sobrenome;
 
+        if ($nomeCompleto == '') {
+            $nomeCompleto = $this->username;
+        }
         return $nomeCompleto;
     }
 
@@ -73,6 +76,5 @@ class User extends BaseUser
     {
         return $this->nomeCompleto();
     }
-
 
 }

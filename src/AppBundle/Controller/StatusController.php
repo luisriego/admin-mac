@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Entity\Status;
 use AppBundle\Form\StatusType;
+use AppBundle\Services\Utiles;
 
 /**
  * Status controller.
@@ -22,10 +23,13 @@ class StatusController extends Controller
      * @Route("/", name="admin_status_index")
      * @Method({"GET", "POST"})
      */
-    public function indexAction(Request $request)
+    public function indexAction(Request $request, Utiles $utiles)
     {
 //        $usuario = $this->getUser()->getUsername();
         $em = $this->getDoctrine()->getManager();
+        
+        $weather = $utiles->weather();
+        
 //        $ultimosChamados = $em->getRepository('AppBundle:Chamado')->ultimosChamados(5, $usuario);
         $campos = ['id', 'nome', 'cor'];
         $titulo = 'status';
@@ -57,10 +61,10 @@ class StatusController extends Controller
             return $this->redirectToRoute('admin_status_index', array('id' => $status->getId()));
         }
 
-        return $this->render('auxiliar/index.generico.html.twig', array(
+        return $this->render('backend/dados/index.generico.html.twig', array(
             'titulo' => $titulo,
             'dados' => $dados,
-//            'ultimosChamados' => $ultimosChamados,
+            'weather' => $weather,
             'breadcrumbs' => $breadcrumbs,
             'campos' => $campos,
             'form' => $form->createView(),

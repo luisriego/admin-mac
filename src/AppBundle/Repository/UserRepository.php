@@ -2,6 +2,7 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\User;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Validator\Constraints\DateTime;
 
@@ -27,6 +28,21 @@ class UserRepository extends EntityRepository
                                 ');
         $consulta->setMaxResults($limite);
         return $consulta->getArrayResult();
+    }
+    
+    public function findOneById(User $user)
+    {
+        $em = $this->getEntityManager();
+        $consulta = $em->createQuery('
+                                SELECT u, p, e
+                                FROM AppBundle:User u
+                                JOIN u.profile p
+                                JOIN u.endereco e
+                                WHERE u.id = :user
+                                ORDER BY u.lastLogin
+                                ');
+        $consulta->setParameter('user', $user->getId());
+        return $consulta->getOneOrNullResult();
     }
 
 //    /**

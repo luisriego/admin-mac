@@ -2,9 +2,9 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Endereco;
-use AppBundle\Entity\Profile;
+use Symfony\Component\Security\Http\Util\TargetPathTrait;
 use AppBundle\Services\Utiles;
+use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,24 +16,13 @@ class ProfileController extends Controller
      */
     public function profileAction(Request $request, Utiles $utiles)
     {
-        $usuario = $this->getUser();
         $em = $this->getDoctrine()->getManager();
-        $perfil = $em->getRepository('AppBundle:Profile')->findOneBy(array('user' => $usuario));
-        $endereco = $em->getRepository('AppBundle:Endereco')->findOneBy(array('user' => $usuario));
-        if (!$perfil) {
-            $perfil = new Profile();
-            $perfil->setUser($usuario);
-        }
-
-        if (!$endereco) {
-            $endereco = new Endereco();
-            $endereco->setUser($usuario);
-        }
+        $usuario = $em->getRepository('AppBundle:User')->findOneById($this->getUser());
 
         $weather = $utiles->weather();
 
-        $form = $this->createForm('AppBundle\Form\ProfileType', $perfil);
-        $formDir = $this->createForm('AppBundle\Form\ProfileDirType', $endereco);
+        $form = $this->createForm('AppBundle\Form\ProfileType', $usuario->getProfile());
+        $formDir = $this->createForm('AppBundle\Form\ProfileDirType', $usuario->getEndereco());
         $form->handleRequest($request);
         $formDir->handleRequest($request);
 
@@ -74,10 +63,8 @@ class ProfileController extends Controller
         ];
 
         // replace this example code with whatever you need
-        return $this->render('dashboard/profile.html.twig', [
+        return $this->render('backend/dashboard/profile.html.twig', [
             'usuario'       => $usuario,
-            'perfil'        => $perfil,
-            'endereco'      => $endereco,
             'weather'       => $weather,
             'breadcrumbs'   => $breadcrumbs,
             'form'          => $form->createView(),

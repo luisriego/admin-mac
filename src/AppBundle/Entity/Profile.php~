@@ -63,11 +63,17 @@ class Profile
      */
     private $titulo;
 
-    /**
-     * Cada perfil tiene un usuario.
-     * @ORM\OneToOne(targetEntity="User", inversedBy="profile")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     */
-    private $user;
+
+    private function nomeCompleto()
+    {
+        $nomeCompleto = $this->nome.' '.$this->sobrenome;
+
+        return $nomeCompleto;
+    }
+
+    public function getNomeCompleto()
+    {
+        return $this->nomeCompleto();
+    }
 
 }

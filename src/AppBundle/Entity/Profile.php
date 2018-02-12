@@ -63,13 +63,6 @@ class Profile
      */
     private $titulo;
 
-    /**
-     * Cada perfil tiene un usuario.
-     * @ORM\OneToOne(targetEntity="User", inversedBy="profile")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     */
-    private $user;
-
 
     private function nomeCompleto()
     {
@@ -82,6 +75,7 @@ class Profile
     {
         return $this->nomeCompleto();
     }
+
 
     /**
      * Get id.
@@ -235,29 +229,5 @@ class Profile
     public function getTitulo()
     {
         return $this->titulo;
-    }
-
-    /**
-     * Set user.
-     *
-     * @param \AppBundle\Entity\User|null $user
-     *
-     * @return Profile
-     */
-    public function setUser(\AppBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user.
-     *
-     * @return \AppBundle\Entity\User|null
-     */
-    public function getUser()
-    {
-        return $this->user;
     }
 }
