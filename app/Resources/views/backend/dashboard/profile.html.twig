@@ -1,5 +1,10 @@
 {% extends 'backend/layout.dashboard.html.twig' %}
-
+{% block title %}{{ titulo }}{% endblock %}
+{% block dashboard %}
+    {% if weather is not null %}
+        r-aside
+    {% endif %}
+{% endblock %}
 
 {% block content %}
     <!-- ============================================================== -->

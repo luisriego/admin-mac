@@ -59,7 +59,7 @@ class ServidorController extends Controller
 //            return $this->redirectToRoute('admin_servidor_index', array('id' => $servidor->getId()));
         }
 
-        return $this->render('auxiliar/index.generico.html.twig', array(
+        return $this->render('backend/dados/index.generico.html.twig', array(
                 'titulo' => $titulo,
 //            'ultimosChamados' => $ultimosChamados,
                 'breadcrumbs' => $breadcrumbs,

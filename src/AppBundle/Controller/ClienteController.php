@@ -27,15 +27,14 @@ class ClienteController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $campos = ['id', 'nome', 'email', 'emailOculto', 'telefone', 'contato', 'endereco', 'ip', 'raiox'];
-        $titulo = 'Cliente';
+        $campos = ['nome', 'email', 'telefone', 'contato', 'ip', 'raiox'];
         $dados = $em->getRepository('AppBundle:Cliente')->findAll();
 
         // dados del breadcrumb
         $breadcrumbs = [
             'home' => [
-                'name' => 'Dados Utilizados',
-                'url' => 'homepage',
+                'name' => 'Pessoas',
+                'url' => 'dashboard',
                 'is_root' => true
             ],
             'status' => [
@@ -45,26 +44,25 @@ class ClienteController extends Controller
             ],
         ];
 
-        // Formulário adaptado a entidade
-        $cliente = new Cliente();
-        $form = $this->createForm('AppBundle\Form\ClienteNewType', $cliente);
-        $form->handleRequest($request);
+//        // Formulário adaptado a entidade
+//        $cliente = new Cliente();
+//        $form = $this->createForm('AppBundle\Form\ClienteNewType', $cliente);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//
+//            $em->persist($cliente);
+//            $em->flush();
+//
+////            return $this->redirectToRoute('admin_cliente_index', array('id' => $cliente->getId()));
+//        }
 
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            $em->persist($cliente);
-            $em->flush();
-
-            return $this->redirectToRoute('admin_cliente_index', array('id' => $cliente->getId()));
-        }
-
-        return $this->render('pessoa/index.generico.html.twig', array(
-                'titulo' => $titulo,
-//            'ultimosChamados' => $ultimosChamados,
+        return $this->render('backend/dados/index.pessoa.html.twig', array(
+                'titulo' => 'Clientes',
                 'breadcrumbs' => $breadcrumbs,
                 'dados' => $dados,
                 'campos' => $campos,
-                'form' => $form->createView(),
+//                'form' => $form->createView(),
             )
         );
     }

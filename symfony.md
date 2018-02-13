@@ -153,4 +153,19 @@ https://twig.symfony.com/doc/2.x/functions/attribute.html
     php bin/console cache:clear --env=dev
     php bin/console cache:clear --env=prod 
 
-##### Ahora
+
+###Utilidades
+
+#####Captar error en la carga de un api json
+#####Handling Http requests not found
+#####Crear esta función como sevicio:
+
+    function get_http_response_code($url) {
+        $headers = get_headers($url);
+        return substr($headers[0], 9, 3);
+    }
+#####y ahora utilizados la función con a la url a utilizar
+
+    if ($this->get_http_response_code($url) == 200){
+        ...
+    }

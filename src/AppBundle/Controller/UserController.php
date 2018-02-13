@@ -28,16 +28,15 @@ class UserController extends Controller
 //        $usuario = $this->getUser()->getUsername();
         $em = $this->getDoctrine()->getManager();
 //        $ultimosChamados = $em->getRepository('AppBundle:Chamado')->ultimosChamados(5, $usuario);
-        $campos = ['id', 'nome', 'sobrenome', 'username', 'email', 'enabled', 'roles'];
-        $titulo = 'Usuário';
+        $campos = ['username', 'email', 'enabled', 'roles'];
 
         $dados = $em->getRepository('AppBundle:User')->findAll();
 
         // dados del breadcrumb
         $breadcrumbs = [
             'home' => [
-                'name' => 'Dados Utilizados',
-                'url' => 'homepage',
+                'name' => 'Pessoas',
+                'url' => 'dashboard',
                 'is_root' => true
             ],
             'status' => [
@@ -48,29 +47,27 @@ class UserController extends Controller
         ];
 
 //        $statuses = $em->getRepository('AppBundle:Status')->findAll();
+//
+//        $user = new User();
+//        $form = $this->createForm('AppBundle\Form\UserNewType', $user);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            $user->setEnabled(true);
+//
+//            $em->persist($user);
+//            $em->flush();
+//
+////            return $this->redirectToRoute('admin_user_index', array('id' => $user->getId()));
+//        }
 
-        $user = new User();
-        $form = $this->createForm('AppBundle\Form\UserNewType', $user);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $user->setEnabled(true);
-
-            $em->persist($user);
-            $em->flush();
-
-            return $this->redirectToRoute('admin_user_index', array('id' => $user->getId()));
-        }
-
-        return $this->render(
-            'pessoa/index.generico.html.twig',
+        return $this->render('backend/dados/index.pessoa.html.twig',
             array(
-                'titulo' => $titulo,
-//            'ultimosChamados' => $ultimosChamados,
+                'titulo' => 'Usuários',
                 'breadcrumbs' => $breadcrumbs,
                 'dados' => $dados,
                 'campos' => $campos,
-                'form' => $form->createView(),
+//                'form' => $form->createView(),
             )
         );
     }

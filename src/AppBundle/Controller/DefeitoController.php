@@ -56,11 +56,10 @@ class DefeitoController extends Controller
             $em->persist($defeito);
             $em->flush();
 
-            return $this->redirectToRoute('admin_defeito_index', array('id' => $defeito->getId()));
+//            return $this->redirectToRoute('admin_defeito_index', array('id' => $defeito->getId()));
         }
 
-        return $this->render(
-            'auxiliar/index.generico.html.twig',
+        return $this->render('backend/dados/index.generico.html.twig',
             array(
                 'titulo' => $titulo,
 //            'ultimosChamados' => $ultimosChamados,

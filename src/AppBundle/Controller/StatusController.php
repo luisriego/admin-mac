@@ -58,7 +58,8 @@ class StatusController extends Controller
             $em->persist($status);
             $em->flush();
 
-            return $this->redirectToRoute('admin_status_index', array('id' => $status->getId()));
+            return $this->redirectToRoute('admin_status_index');
+//            return $this->redirectToRoute('admin_status_index', array('id' => $status->getId()));
         }
 
         return $this->render('backend/dados/index.generico.html.twig', array(

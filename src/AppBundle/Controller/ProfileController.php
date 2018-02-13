@@ -2,7 +2,6 @@
 
 namespace AppBundle\Controller;
 
-use Symfony\Component\Security\Http\Util\TargetPathTrait;
 use AppBundle\Services\Utiles;
 use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -67,6 +66,7 @@ class ProfileController extends Controller
             'usuario'       => $usuario,
             'weather'       => $weather,
             'breadcrumbs'   => $breadcrumbs,
+            'titulo'        => 'Meu perfil',
             'form'          => $form->createView(),
             'formDir'       => $formDir->createView(),
         ]);

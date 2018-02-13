@@ -55,11 +55,10 @@ class RoteadorController extends Controller
             $em->persist($roteador);
             $em->flush();
 
-            return $this->redirectToRoute('admin_servidor_index', array('id' => $roteador->getId()));
+//            return $this->redirectToRoute('admin_servidor_index', array('id' => $roteador->getId()));
         }
 
-        return $this->render(
-            'auxiliar/index.generico.html.twig',
+        return $this->render('backend/dados/index.generico.html.twig',
             array(
                 'titulo' => $titulo,
 //            'ultimosChamados' => $ultimosChamados,

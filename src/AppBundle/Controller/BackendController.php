@@ -32,11 +32,11 @@ class BackendController extends Controller
         $chamadosAbertos = $em->getRepository('AppBundle:Chamado')->chamadosAbertos();
         // dados del breadcrumb
         $breadcrumbs = [
-            'home' => [
-                'name' => 'Painel Principal',
-                'url'  => 'homepage',
-                'is_root' => true
-            ],
+//            'home' => [
+//                'name' => 'Painel Principal',
+//                'url'  => 'homepage',
+//                'is_root' => true
+//            ],
         ];
 
         // replace this example code with whatever you need

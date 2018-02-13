@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Applications/MAMP/htdocs/API_admin-pro-0.1.0/src/AppBundle/Controller/ChamadoController.php</file>
-            <file>file:/Applications/MAMP/htdocs/API_admin-pro-0.1.0/src/AppBundle/Repository/ChamadoRepository.php</file>
-            <file>file:/Applications/MAMP/htdocs/API_admin-pro-0.1.0/app/Resources/views/dashboard/index.html.twig</file>
-            <file>file:/Applications/MAMP/htdocs/API_admin-pro-0.1.0/app/Resources/views/dashboard/modules/m.stats.box.html.twig</file>
-            <file>file:/Applications/MAMP/htdocs/API_admin-pro-0.1.0/src/AppBundle/Controller/DefaultController.php</file>
+            <file>file:/Applications/MAMP/htdocs/API_admin-pro-0.1.0/app/Resources/views/backend/dados/index.generico.html.twig</file>
+            <file>file:/Applications/MAMP/htdocs/API_admin-pro-0.1.0/src/AppBundle/Controller/BackendController.php</file>
+            <file>file:/Applications/MAMP/htdocs/API_admin-pro-0.1.0/symfony.md</file>
+            <file>file:/Applications/MAMP/htdocs/API_admin-pro-0.1.0/src/AppBundle/Controller/ProfileController.php</file>
+            <file>file:/Applications/MAMP/htdocs/API_admin-pro-0.1.0/bundles.md</file>
+            <file>file:/Applications/MAMP/htdocs/API_admin-pro-0.1.0/git.md</file>
+            <file>file:/Applications/MAMP/htdocs/API_admin-pro-0.1.0/src/AppBundle/Controller/ClienteController.php</file>
         </group>
     </open-files>
 </project-private>

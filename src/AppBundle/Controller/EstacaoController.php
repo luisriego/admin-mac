@@ -56,11 +56,10 @@ class EstacaoController extends Controller
             $em->persist($estacao);
             $em->flush();
 
-            return $this->redirectToRoute('admin_servidor_index', array('id' => $estacao->getId()));
+//            return $this->redirectToRoute('admin_servidor_index', array('id' => $estacao->getId()));
         }
 
-        return $this->render(
-            'auxiliar/index.generico.html.twig',
+        return $this->render('backend/dados/index.generico.html.twig',
             array(
                 'titulo' => $titulo,
 //            'ultimosChamados' => $ultimosChamados,
